@@ -1,0 +1,101 @@
+﻿<%@ Master Language="C#" AutoEventWireup="true" CodeBehind="site1.Master.cs" Inherits="BikeRental.Site1" %>
+
+<!DOCTYPE html>
+
+<html>
+<head runat="server">
+    <title></title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+    <link rel="stylesheet" href="content/master.css">
+    <asp:ContentPlaceHolder ID="head" runat="server">
+    </asp:ContentPlaceHolder>
+</head>
+<body>
+    <form id="form1" runat="server">
+        <header class="header">
+            <div id="menu-btn" class="fas fa-bars"></div>
+            <a href="#" class="logo"><span>RENTA</span>BIKE</a>
+            <nav class="navbar">
+                <!-- User Links -->
+                <div id="UserLinks" runat="server" visible="true">
+                    <asp:Button ID="btnhome" runat="server" Text="Home" CssClass="b" style="color:var(--black);font-size:1.8rem;background-color:white;margin:0 0.6rem;"  OnClick="Home_btn" onmouseover="this.style.color='#f9d806';" onmouseout="this.style.color='#130f40';" />
+                    <asp:Button ID="btnabout" runat="server" Text="About"  CssClass="b" style="color:var(--black);font-size:1.8rem;background-color:white;margin:0 0.6rem;"  OnClick="About_btn" onmouseover="this.style.color='#f9d806';" onmouseout="this.style.color='#130f40';" />
+                    <asp:Button ID="btncontact" runat="server" Text="Contact"  CssClass="b" style="color:var(--black);font-size:1.8rem;background-color:white;margin:0 0.6rem;"  OnClick="Contact_btn" onmouseover="this.style.color='#f9d806';" onmouseout="this.style.color='#130f40';" />
+
+                    <asp:Button ID="btnshowbikes" runat="server" Text="Bikes"  CssClass="b" style="color:var(--black);font-size:1.8rem;background-color:white;margin:0 0.6rem;"  OnClick="Showbikes" onmouseover="this.style.color='#f9d806';" onmouseout="this.style.color='#130f40';" />
+                    <asp:Button ID="btnViewBookings" runat="server" Text="MyBookings"  CssClass="b" style="color:var(--black);font-size:1.8rem;background-color:white;margin:0 0.6rem;"  OnClick="Viewbooking" onmouseover="this.style.color='#f9d806';" onmouseout="this.style.color='#130f40';" />
+                    <a class="location" disable="disabled" style="cursor:not-allowed;">
+                        <i class="fas fa-map-marker-alt"></i>Manipal
+                    </a>
+                </div>
+
+                <!-- Admin Links -->
+                <div id="AdminLinks" runat="server" visible="false">
+                    <a class="location" disable="disabled" style="cursor:not-allowed;">
+                        ADMIN DASHBOARD
+                    </a>
+                    <a href="index.aspx">Home</a>
+                    <a href="bookings.aspx">Bookings</a>
+                    <a href="updatebike.aspx">UpdateBikes</a>
+                    <!-- Add more admin-specific links here -->
+                </div>
+            </nav>
+            <div id="login-btn">
+                <asp:Button ID="LogoutButton" runat="server" Text="LOGOUT" CssClass="btn" OnClick="LogoutButton_Click" Visible="false" />
+                <asp:Button ID="LoginButton" runat="server" Text="LOGIN" CssClass="btn" OnClick="LoginButton_Click" />
+            </div>
+        </header>
+
+        <asp:ContentPlaceHolder ID="ContentPlaceHolder1" runat="server">
+        </asp:ContentPlaceHolder>
+
+        <footer class="site-footer">
+            <div class="footer-content">
+                <div class="footer-section">
+                    <p>About <span>RENTA</span>BIKE</p>
+                    <p style="font-size:1.6rem"><span>RENTA</span>BIKE offers a wide range of bicycles for rent, ensuring you have the best ride for your adventures.</p>
+                </div>
+                <div class="footer-section">
+                    <p>Quick Links</p>
+                    <ul class="footer-links">
+                        <li><a href="index.aspx">Home</a></li>
+                        <li><a href="about.aspx">About Us</a></li>
+                        <li><a href="contact.aspx">Contact Us</a></li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="footer-bottom">
+                <p style="font-size:1.6rem">Copyright@2024 RENTABIKE. All Rights Reserved.</p>
+            </div>
+        </footer>
+    </form>
+    <script>
+        let menu = document.querySelector("#menu-btn");
+        let navbar = document.querySelector(".navbar");
+
+        menu.onclick = () => {
+            menu.classList.toggle('fa-times');
+            navbar.classList.toggle('active');
+        }
+
+        window.onscroll = () => {
+            if (window.scrollY > 0) {
+                document.querySelector('.header').classList.add('active');
+            } else {
+                document.querySelector('.header').classList.remove('active');
+            }
+            menu.classList.remove('fa-times');
+            navbar.classList.remove('active');
+        }
+
+        window.onload = () => {
+            if (window.scrollY > 0) {
+                document.querySelector('.header').classList.add('active');
+            } else {
+                document.querySelector('.header').classList.remove('active');
+            }
+        }
+    </script>
+</body>
+</html>
